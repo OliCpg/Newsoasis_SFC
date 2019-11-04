@@ -1,13 +1,20 @@
-import React from "react";
 import ReactDOM from "react-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Axios from "axios";
 
-import "./styles.css";
+// Custom components
+import Appheader from "./components/appheader";
+import Articlesview from "./components/articlesview";
+import Preferencesview from "./components/preferencesview";
+
+import "./styles.scss";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Appheader />
+      <Articlesview />
     </div>
   );
 }

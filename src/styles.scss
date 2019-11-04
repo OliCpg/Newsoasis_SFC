@@ -1,0 +1,158 @@
+$primary: #0091ca;
+$secondary: #fff;
+$article_title : #fff;
+
+*{box-sizing:border-box;}
+html{
+overflow-x: hidden;
+}
+
+body {
+  width:100vw;
+  overflow-x:hidden;
+  min-height:100vh;
+  margin:0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.app-header {
+  background-color: #030303;
+  display: flex;
+  color: white;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: right;
+  padding: 1em 2em 1em 1em;
+
+  h1 {
+    margin: 0 auto 0 1em;
+  }
+
+  .full{
+    min-width:100%;
+    display:flex;
+    justify-content: flex-end;
+  }
+}
+
+
+
+.app-articles {
+  display:flex;
+  flex-wrap: wrap;
+  padding:0 2rem;
+  h2{
+    min-width:100%;
+  }
+  .article{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    flex:0 1 30%;
+    margin:0 0 2em 0;
+
+    @media screen and (max-width: 800px){
+      flex-basis:50%;
+    }
+    @media screen and (max-width: 500px){
+      flex-basis:100%;
+    }
+
+    img{
+      background: #000;
+      width: 100%;
+      height:200px;
+      object-fit:cover;
+      display: block;
+      order: -1;
+    }
+
+    h3{
+      position:absolute;
+      margin: 0;
+      padding:1em;
+      color:$article_title;
+      text-shadow:0 0 .25em rgba(0,0,0,.5);
+      position: relative;
+      transform: translateY(-100%);
+      a{
+        color:inherit;
+        text-decoration: none;
+      }
+    }
+
+    .content{
+      padding:0 1em;
+    }
+
+    button{
+      margin: 1em auto;
+    }
+  }
+}
+
+select{
+  border:none;
+  display:block;
+  background-color: $primary;
+  padding:1em;
+  height:2em;
+  line-height: 2em;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+  color:$secondary;
+  font-size: 1rem;
+  cursor:pointer;
+
+
+
+  &:focus{
+    outline: none
+  }
+}
+
+button{
+  border:none;
+  display:block;
+  background-color: $primary;
+  padding:.5em;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+  color:$secondary;
+  font-size: 1rem;
+  cursor:pointer;
+}
+
+.app-preferences {
+  padding:0 2rem;
+  
+  form{
+    margin:0 auto;
+  }
+
+input{
+  border:none;
+  border-bottom:1px solid #ccc;
+  cursor:pointer;
+  &:focus{
+    outline: none;
+    border-color:$primary;
+  }
+}
+
+.controls{
+  display:flex;
+  justify-content:center;
+  &>*{
+    margin:1em;
+  }
+}
+.field{
+  display:flex;
+  padding:1em;
+  label{
+    flex:1;
+    max-width:30%;
+  }
+}
+}
