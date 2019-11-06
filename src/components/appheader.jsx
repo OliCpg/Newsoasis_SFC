@@ -2,6 +2,8 @@ import React from "react";
 import { ReactComponent as Logo } from "./../logo.svg";
 
 const Appheader = props => {
+  const { sources, onSelect } = props;
+
   return (
     <header className="app-header">
       <h1>
@@ -11,11 +13,19 @@ const Appheader = props => {
         ⚙️
       </span>
       <div className="full">
-        <select defaultValue="">
+        <select
+          defaultValue=""
+          onChange={ev => {
+            onSelect(ev.target.value);
+          }}
+        >
           <option value="" disabled />
-          <option>Source A</option>
-          <option>Source B</option>
-          <option>Source C</option>
+          {sources.length > 0 &&
+            sources.map(source => (
+              <option key={source.id} value={source.id}>
+                {source.name}
+              </option>
+            ))}
         </select>
       </div>
     </header>

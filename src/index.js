@@ -11,10 +11,42 @@ import Preferencesview from "./components/preferencesview";
 import "./styles.scss";
 
 function App() {
+  /** STATES */
+  const [articles, setArticles] = useState([]);
+  const [sources, setSources] = useState([]);
+  const [currentsource, setCurrentsource] = useState("");
+  const [isloading, setIsloading] = useState(true);
+  /** EFFECTS */
+  useEffect(() => {
+    console.clear();
+
+    loadSources();
+    currentsource && loadArticles();
+  }, [currentsource]);
+
+  /** LOGIC */
+  const loadArticles = async () => {
+    setIsloading(true);
+    console.log(`loading articles from ${currentsource}`);
+    const response = await Axios.get(
+      `https://newsapi.org/v2/top-headlines?sources=${currentsource}&apiKey=ab67b0e809cb483f9e800b3476a2175a`
+    );
+    setArticles(response.data.articles);
+    setIsloading(false);
+  };
+
+  const loadSources = async () => {
+    const response = await Axios.get(
+      `https://newsapi.org/v2/sources?country=fr&apiKey=ab67b0e809cb483f9e800b3476a2175a`
+    );
+    setSources(response.data.sources);
+  };
+  const loadData = () => {};
+
   return (
     <div className="App">
-      <Appheader />
-      <Articlesview />
+      <Appheader sources={sources} onSelect={setCurrentsource} />
+      <Articlesview articles={articles} loading={isloading} />
     </div>
   );
 }
