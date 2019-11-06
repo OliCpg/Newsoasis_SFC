@@ -72,6 +72,7 @@ body {
       padding:1em;
       color:$article_title;
       background:#000;
+      min-height: 8em;
       a{
         color:inherit;
         text-decoration: none;
@@ -152,4 +153,16 @@ input{
     max-width:30%;
   }
 }
+}
+.warning{
+  border:2px solid rgb(255, 83, 64);
+  color:rgb(255, 83, 64);
+  background:pink;
+  padding:1em;
+  margin:3em;
+
+  a{
+    color:inherit;
+    font-weight:bolder;
+  }
 }

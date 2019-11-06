@@ -1,20 +1,24 @@
 import React from "react";
 import { ReactComponent as Logo } from "./../logo.svg";
-
+import { Route, Link } from "react-router-dom";
 const Appheader = props => {
-  const { sources, onSelect } = props;
+  const { sources, currentsource, onSelect } = props;
 
   return (
     <header className="app-header">
       <h1>
         <Logo />
       </h1>
-      <span role="img" aria-label="preferences">
-        ⚙️
-      </span>
+      <Route exact path="/">
+        <Link to="/preferences">
+          <span role="img" aria-label="preferences">
+            ⚙️
+          </span>
+        </Link>
+      </Route>
       <div className="full">
         <select
-          defaultValue=""
+          value={currentsource}
           onChange={ev => {
             onSelect(ev.target.value);
           }}
